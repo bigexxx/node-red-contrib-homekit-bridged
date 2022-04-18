@@ -1,6 +1,11 @@
 <!--suppress EqualityComparisonWithCoercionJS -->
 <script data-template-name="homekit-service" type="text/x-red">
     <div class="form-row">
+        <label for="node-config-input-configId"><i class="fa fa-tag"></i> Config ID</label>
+        <input type="text" id="node-config-input-configId" placeholder="Config ID">
+    </div>
+
+    <div class="form-row">
         <label for="node-config-input-isParent"><i class="fa fa-tasks"></i> Service Hierarchy</label>
         <select id="node-config-input-isParent" style="width: 70%">
             <option value="true" selected="selected">Parent</option>
@@ -298,6 +303,9 @@
         category: "Apple HomeKit",
         paletteLabel: 'service',
         defaults: {
+            configId: {
+                required: false,
+            },
             isParent: {
                 value: 'false',
                 required: true,
@@ -496,7 +504,7 @@
         icon: 'homekit.png',
         color: '#fcc127',
         label: function () {
-            return this.name || this.serviceName || 'Service'
+            return this.serviceName + ': ' + this.name
         },
         labelStyle: function () {
             return this.name ? 'node_label_italic' : ''
@@ -718,7 +726,6 @@
 
             node.isParent = $('#node-config-input-isParent').val() === 'true'
             node.hostType = $('#node-config-input-hostType').val()
-
 
             if (!node.isParent) {
                 const selectedParentService = $('#node-input-parentService option:selected')

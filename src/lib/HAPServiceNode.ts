@@ -196,7 +196,7 @@ module.exports = (RED: NodeAPI) => {
             self.uniqueIdentifier = self._alias + '/' + self._flow.path
         } else {
             // For top level flows, use the node identifier
-            self.uniqueIdentifier = self.id
+            self.uniqueIdentifier = self.config.configId || self.id
         }
 
         // Generate UUID from unique identifier
@@ -211,13 +211,17 @@ module.exports = (RED: NodeAPI) => {
                 // accessory UUID will be generated based on that data to ensure that
                 // a new accessory will be created if any of those configuration values
                 // changes.
+                // const accessoryUUID = uuid.generate(
+                //     'A' +
+                //         self.uniqueIdentifier +
+                //         self.name +
+                //         self.config.manufacturer +
+                //         self.config.serialNo +
+                //         self.config.model
+                // )
                 const accessoryUUID = uuid.generate(
                     'A' +
-                        self.uniqueIdentifier +
-                        self.name +
-                        self.config.manufacturer +
-                        self.config.serialNo +
-                        self.config.model
+                    self.uniqueIdentifier
                 )
 
                 self.accessory = AccessoryUtils.getOrCreate(
