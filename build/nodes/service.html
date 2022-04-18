@@ -1,8 +1,8 @@
 <!--suppress EqualityComparisonWithCoercionJS -->
 <script data-template-name="homekit-service" type="text/x-red">
     <div class="form-row">
-        <label for="node-config-input-configId"><i class="fa fa-tag"></i> Config ID</label>
-        <input type="text" id="node-config-input-configId" placeholder="Config ID">
+        <label for="node-input-configId"><i class="fa fa-tag"></i> Config ID</label>
+        <input type="text" id="node-input-configId" placeholder="Config ID">
     </div>
 
     <div class="form-row">
@@ -304,7 +304,7 @@
         paletteLabel: 'service',
         defaults: {
             configId: {
-                required: false,
+                value: (Math.random() + 1).toString(36).substring(7),
             },
             isParent: {
                 value: 'false',
