@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-homekit-bridged",
+  "name": "@bigexxx/node-red-contrib-homekit-bridged",
   "version": "1.4.3",
   "description": "Node-RED nodes to simulate Apple HomeKit devices.",
   "main": "build/nodes/nrchkb.js",
